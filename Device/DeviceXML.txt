@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<ArrayOfDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Device>
+    <Name>Atari 2600</Name>
+    <Manufacturer>Atari</Manufacturer>
+    <Price>99.99</Price>
+  </Device>
+  <Device>
+    <Name>XBOX</Name>
+    <Manufacturer>Microsoft</Manufacturer>
+    <Price>409.99</Price>
+  </Device>
+  <Device>
+    <Name>Game Cube</Name>
+    <Manufacturer>Nintendo</Manufacturer>
+    <Price>499.99</Price>
+  </Device>
+  <Device>
+    <Name>Dreamcast</Name>
+    <Manufacturer>SEGA</Manufacturer>
+    <Price>399.99</Price>
+  </Device>
+  <Device>
+    <Name>Mega Drive</Name>
+    <Manufacturer>SEGA</Manufacturer>
+    <Price>199.99</Price>
+  </Device>
+  <Device>
+    <Name>Saturn</Name>
+    <Manufacturer>SEGA</Manufacturer>
+    <Price>299.99</Price>
+  </Device>
+  <Device>
+    <Name>PS 2</Name>
+    <Manufacturer>Sony</Manufacturer>
+    <Price>489.99</Price>
+  </Device>
+  <Device>
+    <Name>PS 1</Name>
+    <Manufacturer>Sony</Manufacturer>
+    <Price>356.99</Price>
+  </Device>
+</ArrayOfDevice>

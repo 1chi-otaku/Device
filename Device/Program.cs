@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Device
 {
@@ -59,6 +62,72 @@ namespace Device
             {
                 Console.WriteLine(device.Name + " – " + device.Manufacturer);
             }
+            List<Device> fusion = device_fustion.ToList();
+
+            #region 3/10/23
+            Console.WriteLine();
+            Console.ReadKey();
+
+            int choice = -1;
+
+            FileStream stream = null;
+            XmlSerializer serializer = null;
+            DataContractJsonSerializer jsonFormatter = null;
+            while (choice != 0)
+            {
+                Console.Clear();
+                Console.WriteLine("1 - Serialization XML");
+                Console.WriteLine("2 - Deserialization XML");
+                Console.WriteLine("3 - Serialization JSON");
+                Console.WriteLine("4 - Deserialization JSON");
+                Console.WriteLine("0 - Exit");
+                choice = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+                switch (choice)
+                {
+                    case 1:
+                        stream = new FileStream("../../DeviceXML.txt", FileMode.Create);
+                        serializer = new XmlSerializer(typeof(List<Device>));
+                        serializer.Serialize(stream, fusion);
+                        stream.Close();
+                        break;
+                    case 2:
+                        stream = new FileStream("../../DeviceXML.txt", FileMode.Open);
+                        serializer = new XmlSerializer(typeof(List<Device>));
+                        fusion = (List<Device>)serializer.Deserialize(stream);
+                        string s = String.Empty;
+                        foreach (var j in fusion)
+                        {
+                            Console.WriteLine(j.ToString());
+                        }
+                        Console.WriteLine(s);
+                        stream.Close();
+                        Console.ReadKey();
+                        break;
+                    case 3:
+                        stream = new FileStream("../../DeviceJSON.json", FileMode.Create);
+                        jsonFormatter = new DataContractJsonSerializer(typeof(List<Device>));
+                        jsonFormatter.WriteObject(stream, fusion);
+                        stream.Close();
+                        Console.WriteLine("Сериализация успешно выполнена!");
+                        break;
+                    case 4:
+                        stream = new FileStream("../../DeviceJSON.json", FileMode.Open);
+                        jsonFormatter = new DataContractJsonSerializer(typeof(List<Device>));
+                        fusion = (List<Device>)jsonFormatter.ReadObject(stream);
+                        s = String.Empty;
+                        foreach (var j in fusion)
+                        {
+                            Console.WriteLine(j.ToString());
+                        }
+                        stream.Close();
+                        Console.ReadKey();
+                        break;
+                }
+            }
+
+            #endregion
+
         }
     }
 } 
